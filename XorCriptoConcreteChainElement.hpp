@@ -18,7 +18,7 @@
 #include <string>
 
 using namespace std;
-
+//Classe para executar a criptografia através de uma senha.
 class XorCriptoConcreteChainElement : public AbstractChainElement {
 private:
     const string name = "XorCriptoConcreteChainElement";

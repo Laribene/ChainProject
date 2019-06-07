@@ -21,7 +21,7 @@ string TranspositionCripto::getName()
 
 void TranspositionCripto::internalProcessing(shared_ptr<MyDataObject> value) {
     string buffer = value->getValue();
-    int deslocamento;
+    int deslocamento; //Criamos essa variavel para saber se o deslocamento é positivo ou negativo.
 
     if (key) {
         deslocamento = 1;
@@ -35,19 +35,23 @@ void TranspositionCripto::internalProcessing(shared_ptr<MyDataObject> value) {
     value->setValue(buffer);
 }
 
-void TranspositionCripto::readParameters() {
+void TranspositionCripto::readParameters() { //O readParameters serve para saber se o usuario quer o deslocamento positivo ou negativo.
 
     string buffer;
-    bool isTrue;
     cout << "Qual o deslocamento?" << endl;
     cout << "0 -> False" << endl;
     cout << "1 -> True" << endl;
-    cin >> isTrue;
-
-    if (isTrue) {
-        key = true;
-    }
-    else {
+    getline(cin, buffer);
+    
+   if(buffer == "1"){       //Se o usuario digitar 1, o deslocamento sera positivo, se digitar 0 o deslocamento sera negativo,
+        key = true;         //Se digitar qualquer outra coisa dara valor invalido e ele voltara para a tela de escolha de deslocamento.
+   }
+    else if(buffer == "0"){
         key = false;
-    }   
+    }
+    else{
+        cout << "Valor invalido, digite novamente" << endl;
+        TranspositionCripto::readParameters();
+    }
+
 }

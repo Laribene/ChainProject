@@ -19,7 +19,7 @@
 #include <memory>
 
 using namespace std;
-
+//Classe que deixa todos os elementos da string em letra minuscula
 class ToLowerConcreteChainElement : public AbstractChainElement {
 private:
     const string name = "ToLowerConcreteChainElement";

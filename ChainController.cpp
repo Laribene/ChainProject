@@ -20,39 +20,30 @@
 #include "ReverseString.hpp"
 #include "TranspositionCripto.hpp"
 #include "ConverterChainElement.hpp"
+#include "CharCounter.hpp"
 #include "Menu.hpp"
 
 using namespace std;
 
-ChainController::ChainController()
-   {
+ChainController::ChainController(){
    chainUnits.clear();
    myData = NULL;
-   }
+}
 
-void ChainController::start(void)
-{
-    vector<string> opcoes({ "Exit", "Digitar a string para processamento","Adicionar elementos de processamento" ,"Disparar cadeia de processamento" });
+void ChainController::start(void){
+      vector<string> opcoes({ "Exit", "Digitar a string para processamento","Adicionar elementos de processamento" ,"Disparar cadeia de processamento" });
     Menu menu("Main Menu", opcoes);
     int escolha = -1;
-    bool existeString = 0;
-    while(escolha)
-    {
+    bool seString = 0;
+    while(escolha){
         escolha = menu.getEscolha();
 
-        switch(escolha)
-        {
-            case 1: { string buffer;
-                      cout << "String: ";
-                      getline(cin, buffer); 
-                      loadData(buffer);
-                    };
-                     existeString =1; break;
-
+        switch(escolha){
+            case 1: { string buffer;cout << "String ......: "; getline(cin, buffer);loadData(buffer);};seString =1; break;
             case 2: { createElements();  }; break;
             case 3: {
-                if(existeString == 0){
-                    cout << "ERRO: Necessaria string para processamento" << endl;
+                if(!seString){
+                    cout << "É necessário digitar uma string para processamento, na opção 1 do menu" << endl;
                     break;
                 }
                 // verify if there is at least one element in the chain
@@ -72,47 +63,52 @@ void ChainController::start(void)
         };
     };
 };
+
+
 void ChainController::loadData(string value){
    myData = make_shared<MyDataObject>(MyDataObject(value));
    }
 
-void ChainController::createElements()
-   {
-    chainUnits
-        .push_back(make_shared<ConverterChainElement>(ConverterChainElement()));
-         
-   // chainUnits
-   //     .push_back(make_shared<ToLowerConcreteChainElement>(ToLowerConcreteChainElement()));
-       
-   // chainUnits
-   //     .push_back(make_shared<ToUpperConcreteChainElement>(ToUpperConcreteChainElement()));
-       
-   // chainUnits
-   //     .push_back(make_shared<ToLowerConcreteChainElement>(ToLowerConcreteChainElement()));
-       
-   // chainUnits
-   //     .push_back(make_shared<XorCriptoConcreteChainElement>(XorCriptoConcreteChainElement()));
-   
-   // chainUnits
-   //     .push_back(make_shared<XorCriptoConcreteChainElement>(XorCriptoConcreteChainElement()));
-       
-//    chainUnits
-//        .push_back(make_shared<XorCriptoConcreteChainElement>(XorCriptoConcreteChainElement()));
-   
-//    chainUnits
-//        .push_back(make_shared<XorCriptoConcreteChainElement>(XorCriptoConcreteChainElement()));
-       
-   // chainUnits
-   //     .push_back(make_shared<ToUpperConcreteChainElement>(ToUpperConcreteChainElement()));
-       
-   // chainUnits
-   //     .push_back(make_shared<ToLowerConcreteChainElement>(ToLowerConcreteChainElement()));
+void ChainController::createElements(){
+vector<string> opcoes({  "Exit",
+                           "Adicionar ToLowerConcreteChainElement",
+                           "Adicionar ToUpperConcreteChainElement",
+                           "Adicionar XorCriptoConcreteChainElement",
+                           "Adicionar ConverterChainElement",
+                           "Adicionar ReverseChainElement",
+                           "Adicionar CountChainElement",
+                           "Adicionar TranspositionCriptoChainElement",
+                           "Adicionar Todos"
+                          });
 
-   //  chainUnits
-   //      .push_back(make_shared<ReverseString>(ReverseString()));
+    Menu menu("Main Menu", opcoes);
+    int escolha = -1;
 
-   // chainUnits
-   //    .push_back(make_shared<TranspositionCripto>(TranspositionCripto()));     
+    while(escolha)
+    {
+        escolha = menu.getEscolha();
+
+        switch(escolha)
+        {
+            case 1: { chainUnits.push_back(make_shared<ToLowerConcreteChainElement>(ToLowerConcreteChainElement()));}break;
+            case 2: { chainUnits.push_back(make_shared<ToUpperConcreteChainElement>(ToUpperConcreteChainElement()));}break;
+            case 3: { chainUnits.push_back(make_shared<XorCriptoConcreteChainElement>(XorCriptoConcreteChainElement()));}break;
+            case 4: { chainUnits.push_back(make_shared<ConverterChainElement>(ConverterChainElement()));}break;
+            case 5: { chainUnits.push_back(make_shared<ReverseString>(ReverseString()));}break;
+            case 6: { chainUnits.push_back(make_shared<CharCounter>(CharCounter()));}break;
+            case 7: { chainUnits.push_back(make_shared<TranspositionCripto>(TranspositionCripto()));}break;
+            case 8: {
+                chainUnits.push_back(make_shared<ToLowerConcreteChainElement>(ToLowerConcreteChainElement()));
+                chainUnits.push_back(make_shared<ToUpperConcreteChainElement>(ToUpperConcreteChainElement()));
+                chainUnits.push_back(make_shared<XorCriptoConcreteChainElement>(XorCriptoConcreteChainElement()));
+                chainUnits.push_back(make_shared<ConverterChainElement>(ConverterChainElement()));
+                chainUnits.push_back(make_shared<ReverseString>(ReverseString()));
+                chainUnits.push_back(make_shared<CharCounter>(CharCounter()));
+                chainUnits.push_back(make_shared<TranspositionCripto>(TranspositionCripto()));
+            }break;
+        };
+    };
+  
    }
 
     

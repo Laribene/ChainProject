@@ -5,7 +5,7 @@
 #include <string>
 
 using namespace std;
-
+//Classe que troca de posição todos os caracteres da string.
 class ReverseString : public AbstractChainElement {
 
     private:

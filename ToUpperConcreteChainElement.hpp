@@ -19,7 +19,7 @@
 #include <memory>
 
 using namespace std;
-
+//Classe que deixa todos os elementos da string maiuscula.
 class ToUpperConcreteChainElement : public AbstractChainElement {
 private:
     const string name = "ToUpperConcreteChainElement";

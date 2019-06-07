@@ -23,8 +23,8 @@ using namespace std;
 
 class ChainController {
 private:
-    vector<shared_ptr<AbstractChainElement>> chainUnits;
-    shared_ptr<MyDataObject>  myData;
+    vector<shared_ptr<AbstractChainElement>> chainUnits; //use SmartPointers
+    shared_ptr<MyDataObject>  myData; //use SmartPointers
 public:
     ChainController();
     void start();

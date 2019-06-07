@@ -22,7 +22,7 @@ using namespace std;
 using namespace std;
 
 int main(int argc, char** argv) {
-    unique_ptr<ChainController> program(new ChainController());
+    unique_ptr<ChainController> program(new ChainController()); //Aqui substituimos outro ponteiro puro pelo ponteiro inteligente unique_ptr.
     Info::wellcome();
     program->start();
     Info::goodbye();

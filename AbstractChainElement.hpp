@@ -22,10 +22,11 @@ using namespace std;
 
 class AbstractChainElement {
 private:
-    shared_ptr<AbstractChainElement> nextElement;
+    shared_ptr<AbstractChainElement> nextElement; //Aqui nós substituimos o ponteiro puro por um ponteiro inteligente.
+                                                  //Consequentemente todos os ponteiros puros que tinhamos foram substituidos.
     virtual void internalProcessing(shared_ptr<MyDataObject>) = 0;
     virtual void readParameters();
-    virtual void writeResults(shared_ptr<MyDataObject> value);
+    virtual void writeResults(shared_ptr<MyDataObject> value);//Essa função existe para escrever na tela o que foi armazenado no ponteiro.
     
 public:
     AbstractChainElement();
