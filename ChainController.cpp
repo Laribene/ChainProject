@@ -31,7 +31,7 @@ ChainController::ChainController(){
 }
 
 void ChainController::start(void){
-      vector<string> opcoes({ "Exit", "Digitar a string para processamento","Adicionar elementos de processamento" ,"Disparar cadeia de processamento" });
+      vector<string> opcoes({ "Exit", "Enter string for processing","Add processing elements" ,"Trigger processing chain" });
     Menu menu("Main Menu", opcoes);
     int escolha = -1;
     bool seString = 0;
@@ -43,7 +43,7 @@ void ChainController::start(void){
             case 2: { createElements();  }; break;
             case 3: {
                 if(!seString){
-                    cout << "É necessário digitar uma string para processamento, na opção 1 do menu" << endl;
+                    cout << "It is necessary to enter a string for processing, in option 1 of the menu" << endl;
                     break;
                 }
                 // verify if there is at least one element in the chain
@@ -71,14 +71,14 @@ void ChainController::loadData(string value){
 
 void ChainController::createElements(){
 vector<string> opcoes({  "Exit",
-                           "Adicionar ToLowerConcreteChainElement",
-                           "Adicionar ToUpperConcreteChainElement",
-                           "Adicionar XorCriptoConcreteChainElement",
-                           "Adicionar ConverterChainElement",
-                           "Adicionar ReverseChainElement",
-                           "Adicionar CountChainElement",
-                           "Adicionar TranspositionCriptoChainElement",
-                           "Adicionar Todos"
+                           "Add ToLowerConcreteChainElement",
+                           "Add ToUpperConcreteChainElement",
+                           "Add XorCriptoConcreteChainElement",
+                           "Add ConverterChainElement",
+                           "Add ReverseChainElement",
+                           "Add CountChainElement",
+                           "Add TranspositionCriptoChainElement",
+                           "Add Todos"
                           });
 
     Menu menu("Main Menu", opcoes);
